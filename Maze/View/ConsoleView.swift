@@ -91,36 +91,48 @@ class ConsoleView: GameViewProtocol {
         ║             LABYRINTH GENERATOR                   ║
         ╚═══════════════════════════════════════════════════╝
         """)
+        print("Enter the number of rooms (more than 2: ", terminator: "")
         
-        print("Enter the number of rows (3-8): ", terminator: "")
-        guard let rowsInput = readLine(),
-              let rows = Int(rowsInput),
-              rows >= 3 && rows <= 8 else {
-            print("Invalid input. Using default: 5")
-            let rows = 5
-            print("Enter the number of columns (3-8): ", terminator: "")
-            guard let colsInput = readLine(),
-                  let cols = Int(colsInput),
-                  cols >= 3 && cols <= 8 else {
-                print("Invalid input. Using default: 5")
-                print("Enter maximum steps (20-100): ", terminator: "")
-                let steps = Int(readLine() ?? "") ?? 50
-                return (rows, 5, steps)
-            }
+        guard let roomsInput = readLine(),
+              let rooms = Int(roomsInput),
+              rooms >= 4 else {
+            print("Invalid input. Using default: 4")
             print("Enter maximum steps (20-100): ", terminator: "")
             let steps = Int(readLine() ?? "") ?? 50
-            return (rows, cols, steps)
+            return (2, 2, steps)
         }
         
-        print("Enter the number of columns (3-8): ", terminator: "")
-        guard let colsInput = readLine(),
-              let cols = Int(colsInput),
-              cols >= 3 && cols <= 8 else {
-            print("Invalid input. Using default: 5")
-            print("Enter maximum steps (20-100): ", terminator: "")
-            let steps = Int(readLine() ?? "") ?? 50
-            return (rows, 5, steps)
-        }
+        let rows = Int.random(in: 1...rooms-1)
+        let cols = rooms - rows
+//        print("Enter the number of rows (3-8): ", terminator: "")
+//        guard let rowsInput = readLine(),
+//              let rows = Int(rowsInput),
+//              rows >= 3 && rows <= 8 else {
+//            print("Invalid input. Using default: 5")
+//            let rows = 5
+//            print("Enter the number of columns (3-8): ", terminator: "")
+//            guard let colsInput = readLine(),
+//                  let cols = Int(colsInput),
+//                  cols >= 3 && cols <= 8 else {
+//                print("Invalid input. Using default: 5")
+//                print("Enter maximum steps (20-100): ", terminator: "")
+//                let steps = Int(readLine() ?? "") ?? 50
+//                return (rows, 5, steps)
+////            }
+//            print("Enter maximum steps (20-100): ", terminator: "")
+//            let steps = Int(readLine() ?? "") ?? 50
+//            return (rows, cols, steps)
+//        }
+//
+//        print("Enter the number of columns (3-8): ", terminator: "")
+//        guard let colsInput = readLine(),
+//              let cols = Int(colsInput),
+//              cols >= 3 && cols <= 8 else {
+//            print("Invalid input. Using default: 5")
+//            print("Enter maximum steps (20-100): ", terminator: "")
+//            let steps = Int(readLine() ?? "") ?? 50
+//            return (rows, 5, steps)
+//        }
         
         print("Enter maximum steps (20-100): ", terminator: "")
         guard let stepsInput = readLine(),
